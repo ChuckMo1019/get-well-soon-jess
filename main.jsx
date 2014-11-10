@@ -31,6 +31,40 @@
     }
   });
 
+  var CreateForm = React.createClass({
+    mixins: [React.addons.LinkedStateMixin],
+    getInitialState: function() {
+      return {
+        text: ''
+      };
+    },
+    handleSubmit: function(e) {
+      e.preventDefault();
+      if (!this.state.text) return;
+      var auth = this.props.firebaseRef.getAuth();
+      this.props.firebaseRef.push({
+        from: auth.uid,
+        fromEmail: auth.password.email,
+        text: this.state.text
+      });
+      this.setState({text: ''});
+      alert("Thanks for your submission!");
+    },
+    render: function() {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <p><small>
+            You can sign the card below!
+            And you can sign it multiple times!
+            Heck, you can even use unsanitized HTML, go nuts.
+          </small></p>
+          <textarea valueLink={this.linkState('text')} className="form-control" rows="10"></textarea>
+          <button>Sign The Card!</button>
+        </form>
+      );
+    }
+  });
+
   var App = React.createClass({
     getInitialState: function() {
       return {
@@ -50,8 +84,8 @@
       if (this.state.authData) {
         contents = (
           <div>
-            <p><em>More stuff will be here soon!</em></p>
-            <button onClick={this.handleLogout}>Log out {this.state.authData.password.email}</button>
+            <CreateForm firebaseRef={this.props.firebaseRef.child('posts')}/>
+            <button style={{fontSize: 12, marginTop: 10}} onClick={this.handleLogout}>Log out {this.state.authData.password.email}</button>
           </div>
         );
       } else {
@@ -64,10 +98,13 @@
   function start() {
     var firebaseRef = new Firebase("https://get-well-soon-jess.firebaseio.com/");
 
-    React.render(
+    var app = React.render(
       <App firebaseRef={firebaseRef}/>,
       document.getElementById('app')
     );
+
+    // For console debugging only!
+    window.app = app;
   }
 
   if (document.readyState == 'loading')
