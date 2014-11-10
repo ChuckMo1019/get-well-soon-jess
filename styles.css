@@ -63,14 +63,17 @@ img.lovebomb {
     margin-bottom: 10px;
   }
   
-  p {
+  p.big {
     font-size: 30px;
     line-height: 50px;
-    padding: 10px;
     margin: 0px;
   }
 
-  p, aside {
+  p.big, .container {
+    padding: 10px;
+  }
+
+  p.big, aside, .container {
     width: 480px;
   }
   
@@ -93,12 +96,12 @@ img.lovebomb {
     font-size: 36px;
   }
 
-  p {
+  p.big {
     font-size: 20px;
     line-height: 36px;
   }
   
-  p, aside {
+  p.big, aside, .container {
     width: 360px;
   }
 }
@@ -116,12 +119,12 @@ img.lovebomb {
     font-size: 27px;
   }
 
-  p {
+  p.big {
     font-size: 15px;
     line-height: 27px;
   }
   
-  p, aside {
+  p.big, aside, .container {
     width: 270px;
   }
 }

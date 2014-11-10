@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>A Love Bomb For Tim Berners-Lee</title>
+<script src="vendor/react/build/react-with-addons.js"></script>
+<script src="vendor/react/build/JSXTransformer.js"></script>
+<title>Get Well Soon, Jess!!</title>
 <link rel="stylesheet" href="styles.css">
 <style>
   body {
@@ -18,7 +20,7 @@
     opacity: 0.5;
   }
 
-  header, p {
+  header, p.big {
     font-family: 'BebasRegular';
     word-spacing: 0.25em;
   }
@@ -40,18 +42,42 @@
   aside a:hover {
     color: #E42F92; /* Pink like the heart on the love bomb. */
   }
+
+  button {
+    background: #E42F92;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 4px;
+    cursor: pointer;
+  }
+
+  .form-control {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 4px;
+    margin: 5px 0;
+    border: none;
+    display: block;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+  }
 </style>
 <div class="content">
   <header>Get Well Soon, Jess!!</header>
   <section>
     <img src="lovebomb.svg" class="lovebomb" alt="Love Bomb">
-    <p>
+    <p class="big">
       We're sorry to hear you aren't
       feeling well and hope you get better soon.
     </p>
+    <div id="app"></div>
     <aside>
-      This bomb was lovingly handcrafted in HTML and CSS.
+      This bomb was lovingly handcrafted with HTML and CSS in November 2014.
     </aside>
   </section>
 </div>
-<script src="http://lovebomb.me/scripts/make-remixable.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+<script type="text/jsx" src="main.jsx"></script>
