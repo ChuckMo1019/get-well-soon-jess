@@ -33,6 +33,7 @@
     getInitialState: function() {
       return {
         name: '',
+        url: '',
         text: ''
       };
     },
@@ -41,6 +42,7 @@
       if (!this.state.name || !this.state.text) return;
       this.props.serverAPI.push({
         name: this.state.name,
+        url: this.state.url,
         text: this.state.text
       });
     },
@@ -50,10 +52,8 @@
           <p><small>
             You can sign the card below. Your name and message will be seen by Jess and her good friends and coworkers.
           </small></p>
-          <p><small>
-            Markdown and totally unsanitized HTML are allowed, so go nuts with your animated GIFs!
-          </small></p>
           <input valueLink={this.linkState('name')} type="text" className="form-control" placeholder="Your name" required/>
+          <input valueLink={this.linkState('url')} type="text" className="form-control" placeholder="Your animated GIF URL (optional)"/>
           <textarea valueLink={this.linkState('text')} className="form-control" rows="10" placeholder="Your message" required></textarea>
           <button>Sign The Card!</button>
         </form>
