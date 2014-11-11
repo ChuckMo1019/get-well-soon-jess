@@ -13,6 +13,17 @@
   font-style: normal;
 }
 
+@font-face {
+    font-family: 'TrashHandRegular';
+    src: url('../fonts/TrashHand-webfont.eot');
+    src: url('../fonts/TrashHand-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/TrashHand-webfont.woff') format('woff'),
+         url('../fonts/TrashHand-webfont.ttf') format('truetype'),
+         url('../fonts/TrashHand-webfont.svg#TrashHandRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
   margin: 15px;
 }
@@ -74,6 +85,26 @@ section {
   aside {
     font-size: 11px;
     padding: 10px;
+  }
+
+  ul.posts {
+    font-family: 'TrashHandRegular';
+    font-size: 20px;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .posts li cite:before {
+    content: '--';
+  }
+
+  .posts li cite {
+    display: block;
+    text-align: right;
+  }
+
+  .posts img {
+    width: 100%;
   }
 }
 

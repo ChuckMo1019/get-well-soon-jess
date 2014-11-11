@@ -65,9 +65,15 @@
   var PostList = React.createClass({
     render: function() {
       return (
-        <ul className="post-list">
+        <ul className="posts">
           {this.props.posts.map(function(post) {
-            return <li>{post.text}</li>
+            return <li key={post._id}>
+              {post.url ? <img src={post.url}/> : null}
+              <blockquote>
+                {post.text}
+                <cite>{post.name}</cite>
+              </blockquote>
+            </li>
           })}
         </ul>
       );
@@ -105,6 +111,7 @@
       if (this.state.isLoggedIn) {
         contents = (
           <div>
+            <PostList posts={this.state.posts}/>
             <CreateForm onSubmit={this.handleCreateFormSubmit} />
             <button style={{fontSize: 12, marginTop: 10}} onClick={this.handleLogout}>Log out</button>
           </div>
@@ -121,8 +128,9 @@
               We're sorry to hear you aren't
               feeling well and hope you get better soon.
             </p>
-            <div className="container">{contents}</div>
-            <PostList posts={this.state.posts}/>
+            <div className="container">
+              {contents}
+            </div>
             <aside>
               This bomb was lovingly handcrafted with HTML and CSS in November 2014.
             </aside>

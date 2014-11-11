@@ -56,7 +56,12 @@ function ServerAPI() {
     }, 100);
   };
 
-  self.posts = [];
+  self.posts = [{
+    _id: 'a',
+    name: 'Human',
+    url: 'http://img1.wikia.nocookie.net/__cb20090725171342/clubpenguinfanon/images/9/9a/Serious_Cat_image.png',
+    text: 'We miss you!'
+  }];
 
   return self;
 }
