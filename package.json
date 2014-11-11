@@ -4,7 +4,9 @@
   "description": "Mega lovebomb for Jess Klein.",
   "main": "app.js",
   "dependencies": {
-    "express": "~4.10.2"
+    "express": "~4.10.2",
+    "mongodb": "1.4.19",
+    "body-parser": "1.9.2"
   },
   "devDependencies": {},
   "scripts": {
