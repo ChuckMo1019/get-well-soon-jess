@@ -102,6 +102,10 @@ section {
     display: block;
     text-align: right;
     padding-bottom: 30px;
+
+    /* Because Firefox and Safari clip the right side of the text,
+     * for some reason... */
+    padding-right: 4px;
   }
 
   .posts li:nth-child(odd) .img {
