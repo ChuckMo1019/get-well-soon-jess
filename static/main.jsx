@@ -40,11 +40,12 @@
     handleSubmit: function(e) {
       e.preventDefault();
       if (!this.state.name || !this.state.text) return;
-      this.props.serverAPI.push({
+      this.props.onSubmit({
         name: this.state.name,
         url: this.state.url,
         text: this.state.text
       });
+      this.setState(this.getInitialState());
     },
     render: function() {
       return (
@@ -61,11 +62,32 @@
     }
   });
 
+  var PostList = React.createClass({
+    render: function() {
+      return (
+        <ul className="post-list">
+          {this.props.posts.map(function(post) {
+            return <li>{post.text}</li>
+          })}
+        </ul>
+      );
+    }
+  });
+
   var App = React.createClass({
     getInitialState: function() {
       return {
-        isLoggedIn: this.props.serverAPI.getAuth()
+        isLoggedIn: this.props.serverAPI.getAuth(),
+        posts: this.props.serverAPI.posts
       };
+    },
+    componentWillMount: function() {
+      this.props.serverAPI.onPostsChanged = function(posts) {
+        this.setState({posts: posts});
+      }.bind(this);
+    },
+    componentWillUnmount: function() {
+      this.props.serverAPI.onPostsChanged = null;
     },
     handleLogout: function() {
       this.props.serverAPI.unauth();
@@ -74,13 +96,16 @@
     handleLogin: function() {
       this.setState({isLoggedIn: true});
     },
+    handleCreateFormSubmit: function(data) {
+      this.props.serverAPI.addPost(data);
+    },
     render: function() {
       var contents;
 
       if (this.state.isLoggedIn) {
         contents = (
           <div>
-            <CreateForm serverAPI={this.props.serverAPI}/>
+            <CreateForm onSubmit={this.handleCreateFormSubmit} />
             <button style={{fontSize: 12, marginTop: 10}} onClick={this.handleLogout}>Log out</button>
           </div>
         );
@@ -97,6 +122,7 @@
               feeling well and hope you get better soon.
             </p>
             <div className="container">{contents}</div>
+            <PostList posts={this.state.posts}/>
             <aside>
               This bomb was lovingly handcrafted with HTML and CSS in November 2014.
             </aside>
@@ -154,9 +180,17 @@
       password = null;
     };
 
-    self.push = function(data) {
-      console.log(data);
+    self.addPost = function(data) {
+      self.posts = React.addons.update(self.posts, {
+        $push: [data]
+      });
+
+      setTimeout(function() {
+        self.onPostsChanged(self.posts);
+      }, 100);
     };
+
+    self.posts = [];
 
     return self;
   }
