@@ -66,8 +66,8 @@
     render: function() {
       return (
         <ul className="posts">
-          {this.props.posts.map(function(post) {
-            return <li key={post._id} className="media">
+          {this.props.posts.map(function(post, i) {
+            return <li key={i} className="media">
 
               {post.url
                ? <img src={post.url} className="img" style={{width: 64}}/>
@@ -106,7 +106,10 @@
       this.setState({isLoggedIn: true});
     },
     handleCreateFormSubmit: function(data) {
-      this.props.serverAPI.addPost(data);
+      this.props.serverAPI.addPost(data, function(err) {
+        if (err)
+          window.alert('An error occurred :(');
+      });
     },
     render: function() {
       var contents;

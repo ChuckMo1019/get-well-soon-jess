@@ -2,6 +2,8 @@ function ServerAPI() {
   var self = {};
   var password = window.localStorage['GWSJ_DINKY_PW'] || null;
 
+  var POLL_INTERVAL = 10000;
+
   function request(method, url, data, cb) {
     if (typeof(data) == 'function') {
       cb = data;
@@ -22,7 +24,27 @@ function ServerAPI() {
       cb(new Error('Network error'));
     };
     req.setRequestHeader('X-Dinky-Password', password);
+    if (data)
+      req.setRequestHeader('Content-Type', 'application/json');
     req.send(data ? JSON.stringify(data) : null);
+  }
+
+  function checkForPostUpdates() {
+    if (!password) return;
+
+    request('GET', '/api/posts', function(err, data) {
+      if (err)
+        return console.log('error fetching posts', err);
+      updatePosts({$set: data.posts});
+    });
+  }
+
+  function updatePosts(updates) {
+    self.posts = React.addons.update(self.posts, updates);
+
+    setTimeout(function() {
+      self.onPostsChanged(self.posts);
+    }, 100);
   }
 
   self.getAuth = function() {
@@ -37,6 +59,7 @@ function ServerAPI() {
         return cb(err);
       }
       window.localStorage['GWSJ_DINKY_PW'] = password;
+      checkForPostUpdates();
       cb(null);
     });
   };
@@ -46,27 +69,22 @@ function ServerAPI() {
     password = null;
   };
 
-  self.addPost = function(data) {
-    self.posts = React.addons.update(self.posts, {
-      $push: [data]
+  self.addPost = function(data, cb) {
+    var lastPosts = self.posts;
+    request('POST', '/api/posts', data, function(err) {
+      if (err) {
+        console.log('error adding post', err);
+        updatePosts({$set: lastPosts});
+      }
+      cb(err);
     });
-
-    setTimeout(function() {
-      self.onPostsChanged(self.posts);
-    }, 100);
+    updatePosts({$push: [data]});
   };
 
-  self.posts = [{
-    _id: 'a',
-    name: 'Human',
-    url: 'http://img1.wikia.nocookie.net/__cb20090725171342/clubpenguinfanon/images/9/9a/Serious_Cat_image.png',
-    text: 'We miss you!'
-  }, {
-    _id: 'b',
-    name: 'Joe',
-    url: '',
-    text: 'Ur not so bad.'
-  }];
+  self.posts = [];
+
+  setInterval(checkForPostUpdates, POLL_INTERVAL);
+  checkForPostUpdates();
 
   return self;
 }
