@@ -135,7 +135,7 @@
               {contents}
             </div>
             <aside>
-              This bomb was lovingly handcrafted with HTML and CSS in November 2014.
+              This mega love bomb was lovingly handcrafted with HTML and CSS in November 2014.
             </aside>
           </section>
         </div>
