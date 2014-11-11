@@ -87,7 +87,22 @@
       } else {
         contents = <LoginForm serverAPI={this.props.serverAPI} onLogin={this.handleLogin} />;
       }
-      return <div className="container">{contents}</div>;
+      return (
+        <div className="content">
+          <header>Get Well Soon, Jess!!</header>
+          <section>
+            <img src="lovebomb.svg" className="lovebomb" alt="Love Bomb"/>
+            <p className="big">
+              We're sorry to hear you aren't
+              feeling well and hope you get better soon.
+            </p>
+            <div className="container">{contents}</div>
+            <aside>
+              This bomb was lovingly handcrafted with HTML and CSS in November 2014.
+            </aside>
+          </section>
+        </div>
+      );
     }
   });
 
