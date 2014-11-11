@@ -61,6 +61,11 @@ function ServerAPI() {
     name: 'Human',
     url: 'http://img1.wikia.nocookie.net/__cb20090725171342/clubpenguinfanon/images/9/9a/Serious_Cat_image.png',
     text: 'We miss you!'
+  }, {
+    _id: 'b',
+    name: 'Joe',
+    url: '',
+    text: 'Ur not so bad.'
   }];
 
   return self;

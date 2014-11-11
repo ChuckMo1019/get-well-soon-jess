@@ -101,10 +101,17 @@ section {
   .posts li cite {
     display: block;
     text-align: right;
+    padding-bottom: 30px;
   }
 
-  .posts img {
-    width: 100%;
+  .posts li:nth-child(odd) .img {
+    transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+  }
+
+  .posts li:nth-child(even) .img {
+    transform: rotate(-5deg);
+    -webkit-transform: rotate(-5deg);
   }
 }
 
@@ -133,3 +140,10 @@ section {
     width: 100%;
   }
 }
+
+/* http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/ */
+.media {margin:10px;}
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+.media .img {float:left; margin-right: 10px;}
+.media .img img{display:block;}
+.media .imgExt{float:right; margin-left: 10px;}

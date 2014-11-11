@@ -67,12 +67,15 @@
       return (
         <ul className="posts">
           {this.props.posts.map(function(post) {
-            return <li key={post._id}>
-              {post.url ? <img src={post.url}/> : null}
-              <blockquote>
+            return <li key={post._id} className="media">
+
+              {post.url
+               ? <img src={post.url} className="img" style={{width: 64}}/>
+               : <div className="img" style={{width: 64, height: 64}}></div>}
+              <div className="bd">
                 {post.text}
                 <cite>{post.name}</cite>
-              </blockquote>
+              </div>
             </li>
           })}
         </ul>
