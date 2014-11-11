@@ -54,7 +54,7 @@
             You can sign the card below. Your name and message will be seen by Jess and her good friends and coworkers.
           </small></p>
           <input valueLink={this.linkState('name')} type="text" className="form-control" placeholder="Your name" required/>
-          <input valueLink={this.linkState('url')} type="text" className="form-control" placeholder="Your animated GIF URL (optional)"/>
+          <input valueLink={this.linkState('url')} type="url" className="form-control" placeholder="Your animated GIF URL (optional)"/>
           <textarea valueLink={this.linkState('text')} className="form-control" rows="10" placeholder="Your message" required></textarea>
           <button>Sign The Card!</button>
         </form>
