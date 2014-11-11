@@ -14,26 +14,17 @@
 }
 
 body, html {
-  margin: 0 auto;
-  height: 100%;
+  margin: 0;
+  width: 900px;
+  height: 900px;
 }
 
 body {
-  display: -moz-box;
-  -moz-box-orient: horizontal;
-  -moz-box-pack: center;
-  -moz-box-align: center;
-
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  
   -webkit-text-size-adjust: none;
 }
 
 header {
-  text-align: right;
+  text-align: left;
 }
 
 section {
@@ -45,18 +36,19 @@ img.lovebomb {
 }
 
 @media screen {
-  html, div.content {
-    width: 800px;
+  div.content {
+    margin-left: 10px;
+    width: 480px;
   }
   
   img.lovebomb {
+    width:185px;
     top: -20px;
     right: -10px;
-    width: 300px;
   }
   
   header {
-    font-size: 50px;
+    font-size: 27px;
   }
 
   section {
@@ -64,8 +56,8 @@ img.lovebomb {
   }
   
   p.big {
-    font-size: 30px;
-    line-height: 50px;
+    font-size: 15px;
+    line-height: 27px;
     margin: 0px;
   }
 
@@ -74,68 +66,11 @@ img.lovebomb {
   }
 
   p.big, aside, .container {
-    width: 480px;
+    width: 270px;
   }
   
   aside {
     font-size: 11px;
     padding: 10px;
-  }
-}
-
-@media screen and (min-width: 600px) and (max-width: 800px) {
-  html, div.content {
-    width: 600px;
-  }
-  
-  img.lovebomb {
-    width: 225px;
-  }
-  
-  header {
-    font-size: 36px;
-  }
-
-  p.big {
-    font-size: 20px;
-    line-height: 36px;
-  }
-  
-  p.big, aside, .container {
-    width: 360px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  html, div.content {
-    width: 450px;
-  }
-  
-  img.lovebomb {
-    width: 168px;
-  }
-  
-  header {
-    font-size: 27px;
-  }
-
-  p.big {
-    font-size: 15px;
-    line-height: 27px;
-  }
-  
-  p.big, aside, .container {
-    width: 270px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  body {
-    -moz-transform: scale(0.66);
-    -moz-transform-origin: 5% 40%;
-    -webkit-transform: scale(0.66);
-    -webkit-transform-origin: 5% 40%;
-    -o-transform: scale(0.66);
-    -o-transform-origin: 5% 40%;
   }
 }
