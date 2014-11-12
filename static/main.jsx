@@ -93,7 +93,7 @@
       return (
         <li className="media">
           {post.url
-           ? <a href={post.url} target="_blank"><img src={this.normalizeImageURL(post.url)} className="img" style={{width: 64}}/></a>
+           ? <a href={post.url} target="_blank"><img src={this.normalizeImageURL(post.url)} className="img" style={{width: 64, marginTop: 4}}/></a>
            : <div className="img" style={{width: 64, height: 64}}></div>}
           <div className="bd">
             {post.text}
