@@ -40,12 +40,18 @@
     handleSubmit: function(e) {
       e.preventDefault();
       if (!this.isValid()) return;
-      this.props.onSubmit({
+      var post = {
         name: this.state.name,
         url: this.state.url,
         text: this.state.text
-      });
+      };
       this.setState(this.getInitialState());
+      this.props.onSubmit(post, function(err) {
+        if (err) {
+          this.setState(post);
+          window.alert('An error occurred :(');
+        }
+      }.bind(this));
     },
     isValid: function() {
       return (this.state.name && this.state.text &&
@@ -129,12 +135,6 @@
     handleLogin: function() {
       this.setState({isLoggedIn: true});
     },
-    handleCreateFormSubmit: function(data) {
-      this.props.serverAPI.addPost(data, function(err) {
-        if (err)
-          window.alert('An error occurred :(');
-      });
-    },
     render: function() {
       var contents;
 
@@ -142,7 +142,7 @@
         contents = (
           <div>
             <PostList posts={this.state.posts}/>
-            <CreateForm onSubmit={this.handleCreateFormSubmit} />
+            <CreateForm onSubmit={this.props.serverAPI.addPost} />
             <button style={{fontSize: 12, marginTop: 10}} onClick={this.handleLogout}>Log out</button>
           </div>
         );
