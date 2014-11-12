@@ -62,6 +62,24 @@
     }
   });
 
+  var Post = React.createClass({
+    render: function() {
+      var post = this.props.post;
+
+      return (
+        <li className="media">
+          {post.url
+           ? <img src={post.url} className="img" style={{width: 64}}/>
+           : <div className="img" style={{width: 64, height: 64}}></div>}
+          <div className="bd">
+            {post.text}
+            <cite>{post.name}</cite>
+          </div>
+        </li>
+      );
+    }
+  });
+
   var PostList = React.createClass({
     render: function() {
       var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
@@ -70,16 +88,7 @@
         <ul className="posts">
           <ReactCSSTransitionGroup transitionName="post-effect" transitionLeave={false}>
           {this.props.posts.map(function(post, i) {
-            return <li key={i} className="media">
-
-              {post.url
-               ? <img src={post.url} className="img" style={{width: 64}}/>
-               : <div className="img" style={{width: 64, height: 64}}></div>}
-              <div className="bd">
-                {post.text}
-                <cite>{post.name}</cite>
-              </div>
-            </li>
+            return <Post key={i} post={post}/>
           })}
           </ReactCSSTransitionGroup>
         </ul>
