@@ -86,7 +86,7 @@
       return (
         <li className="media">
           {post.url
-           ? <img src={post.url} className="img" style={{width: 64}}/>
+           ? <a href={post.url} target="_blank"><img src={post.url} className="img" style={{width: 64}}/></a>
            : <div className="img" style={{width: 64, height: 64}}></div>}
           <div className="bd">
             {post.text}
