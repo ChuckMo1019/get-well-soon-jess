@@ -145,6 +145,17 @@ section {
   }
 }
 
+.post-effect-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+  -webkit-transition: opacity .5s ease-in;
+  -moz-transition: opacity .5s ease-in;
+}
+
+.post-effect-enter.post-effect-enter-active {
+  opacity: 1;
+}
+
 /* http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/ */
 .media {margin:10px;}
 .media, .bd {overflow:hidden; _overflow:visible; zoom:1;}

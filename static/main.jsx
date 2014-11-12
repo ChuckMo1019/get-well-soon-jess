@@ -64,8 +64,11 @@
 
   var PostList = React.createClass({
     render: function() {
+      var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
       return (
         <ul className="posts">
+          <ReactCSSTransitionGroup transitionName="post-effect" transitionLeave={false}>
           {this.props.posts.map(function(post, i) {
             return <li key={i} className="media">
 
@@ -78,6 +81,7 @@
               </div>
             </li>
           })}
+          </ReactCSSTransitionGroup>
         </ul>
       );
     }
