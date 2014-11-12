@@ -156,6 +156,26 @@ section {
   opacity: 1;
 }
 
+.preview {
+  border: 2px solid lightgray;
+  margin: 10px 0;
+}
+
+.preview .preview-header {
+  font-size: 11px;
+  padding: 4px;
+  background: lightgray;
+}
+
+.preview ul.posts {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.preview ul.posts cite {
+  padding-bottom: 0;
+}
+
 /* http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/ */
 .media {margin:10px;}
 .media, .bd {overflow:hidden; _overflow:visible; zoom:1;}

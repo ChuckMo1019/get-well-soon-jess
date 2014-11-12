@@ -39,13 +39,17 @@
     },
     handleSubmit: function(e) {
       e.preventDefault();
-      if (!this.state.name || !this.state.text) return;
+      if (!this.isValid()) return;
       this.props.onSubmit({
         name: this.state.name,
         url: this.state.url,
         text: this.state.text
       });
       this.setState(this.getInitialState());
+    },
+    isValid: function() {
+      return (this.state.name && this.state.text &&
+              (!this.state.url || /^https?:\/\//.test(this.state.url)));
     },
     render: function() {
       return (
@@ -56,6 +60,13 @@
           <input valueLink={this.linkState('name')} type="text" className="form-control" placeholder="Your name" required/>
           <input valueLink={this.linkState('url')} type="url" className="form-control" placeholder="Your avatar or animated GIF URL (optional)"/>
           <textarea valueLink={this.linkState('text')} className="form-control" rows="10" placeholder="Your message" required></textarea>
+          {!this.isValid() ? null
+           : <div className="preview">
+               <div className="preview-header">Here is a preview of your message:</div>
+               <ul className="posts">
+                 <Post post={this.state}/>
+               </ul>
+             </div>}
           <button>Sign The Card!</button>
         </form>
       );
