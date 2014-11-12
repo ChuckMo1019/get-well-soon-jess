@@ -1,6 +1,42 @@
+var fs = require('fs');
 var MongoClient = require('mongodb').MongoClient;
 
-module.exports = function(url, collectionName, documentName) {
+exports.FileSystem = function(filename) {
+  var self = {};
+
+  function readfile() {
+    if (!fs.existsSync(filename))
+      writefile({posts: []});
+
+    return JSON.parse(fs.readFileSync(filename, 'utf-8'));
+  }
+
+  function writefile(doc) {
+    fs.writeFileSync(filename, JSON.stringify(doc, null, 2));
+  }
+
+  self.get = function(cb) {
+    var posts = readfile().posts;
+    process.nextTick(function() { cb(null, posts); });
+  };
+
+  self.post = function(post, cb) {
+    var doc = readfile();
+
+    doc.posts.push(post);
+    writefile(doc);
+    process.nextTick(function() { cb(null); });
+  };
+
+  self.init = function(cb) {
+    readfile();
+    process.nextTick(function() { cb(null); });
+  }
+
+  return self;
+};
+
+exports.Mongo = function(url, collectionName, documentName) {
   var self = {};
   var db;
   var collection;

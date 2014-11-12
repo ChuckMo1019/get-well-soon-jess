@@ -6,7 +6,9 @@ var PASSWORD = process.env.PASSWORD;
 var DB_URL = process.env.MONGOHQ_URL;
 
 var app = express();
-var db = require('./db')(DB_URL, 'lovebombs', 'get-well-soon-jess');
+var db = /^mongodb:\/\//.test(DB_URL)
+         ? require('./db').Mongo(DB_URL, 'lovebombs', 'get-well-soon-jess')
+         : require('./db').FileSystem(DB_URL || __dirname + '/posts.json');
 
 function checkPassword(req, res, next) {
   if (req.headers['x-dinky-password'] != PASSWORD)
