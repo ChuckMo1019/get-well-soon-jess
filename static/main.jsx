@@ -80,13 +80,20 @@
   });
 
   var Post = React.createClass({
+    normalizeImageURL: function(url) {
+      var giphyMatch = url.match(
+        /^https?:\/\/giphy\.com\/gifs\/.+-([A-Za-z0-9]+)$/
+      );
+      if (!giphyMatch) return url;
+      return 'http://media.giphy.com/media/' + giphyMatch[1] + '/giphy.gif';
+    },
     render: function() {
       var post = this.props.post;
 
       return (
         <li className="media">
           {post.url
-           ? <a href={post.url} target="_blank"><img src={post.url} className="img" style={{width: 64}}/></a>
+           ? <a href={post.url} target="_blank"><img src={this.normalizeImageURL(post.url)} className="img" style={{width: 64}}/></a>
            : <div className="img" style={{width: 64, height: 64}}></div>}
           <div className="bd">
             {post.text}
