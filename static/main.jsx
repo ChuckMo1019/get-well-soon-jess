@@ -61,7 +61,7 @@
       return (
         <form onSubmit={this.handleSubmit}>
           <p><small>
-            You can sign the card below. Your name and message will only be seen by Jess and her good friends and coworkers.
+            You can sign the card below. Your name and message will only be seen by Jess and her friends and coworkers.
           </small></p>
           <input valueLink={this.linkState('name')} type="text" className="form-control" placeholder="Your name" required/>
           <input valueLink={this.linkState('url')} type="url" className="form-control" placeholder="Your avatar or animated GIF URL (optional)"/>
