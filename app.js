@@ -7,7 +7,7 @@ var DB_URL = process.env.MONGOHQ_URL;
 
 var app = express();
 var db = /^mongodb:\/\//.test(DB_URL)
-         ? require('./db').Mongo(DB_URL, 'lovebombs', 'get-well-soon-jess')
+         ? require('./db').Mongo(DB_URL, 'lovebombs', 'mari')
          : require('./db').FileSystem(DB_URL || __dirname + '/posts.json');
 
 function checkPassword(req, res, next) {

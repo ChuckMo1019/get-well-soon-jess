@@ -40,10 +40,6 @@ body {
   -webkit-text-size-adjust: none;
 }
 
-header {
-  text-align: right;
-}
-
 section {
   position: relative;
 }
@@ -56,12 +52,11 @@ section {
   img.lovebomb {
     position: absolute;
     width:50%;
-    top: -18px;
     right: -8px;
   }
   
   header {
-    font-size: 27px;
+    font-size: 36px;
   }
 
   section {
@@ -74,10 +69,6 @@ section {
     margin: 0px;
   }
 
-  p.big, .container {
-    padding: 10px;
-  }
-
   p.big, aside, .container {
     width: 50%;
   }
@@ -88,7 +79,8 @@ section {
   }
 
   ul.posts {
-    font-family: 'TrashHandRegular';
+    font-family: 'Amatic SC';
+    font-weight: 700;
     font-size: 20px;
     list-style-type: none;
     padding: 0;
@@ -121,7 +113,7 @@ section {
 
 @media screen and (min-width: 400px) {
   header {
-    font-size: 36px;
+    font-size: 48px;
   }
 
   p.big {
@@ -136,7 +128,6 @@ section {
     display: block;
     width:80%;
     margin: 0 auto;
-    top: -10px;
     left: 0;
   }  
 
@@ -157,14 +148,14 @@ section {
 }
 
 .preview {
-  border: 2px solid lightgray;
+  border: 2px solid #fcefb8;
   margin: 10px 0;
 }
 
 .preview .preview-header {
   font-size: 11px;
   padding: 4px;
-  background: lightgray;
+  background: #fcefb8;
 }
 
 .preview ul.posts {

@@ -3,27 +3,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script src="vendor/react/build/react-with-addons.js"></script>
 <script src="vendor/react/build/JSXTransformer.js"></script>
-<title>Get Well Soon, Jess!!</title>
+<title>We Love and Will Miss You, Mari!!</title>
 <link rel="stylesheet" href="styles.css">
+<link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
 <style>
   body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: white;
-    color: black;
+    color: #d3ad0f;
   }
 
   section {
-    background: rgba(0, 0, 0, 0.1); /* Black with 10% opacity */
+    background: white;
     border-radius: 4px;
   }
 
-  header, aside {
+  aside {
     opacity: 0.5;
   }
 
   header, p.big {
-    font-family: 'BebasRegular';
+    font-family: 'Amatic SC';
     word-spacing: 0.25em;
+  }
+
+  p.big em {
+    display: block;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 1.75em;
+  }
+
+  p.big strong {
+    display: block;
+    font-size: 8em;
+    line-height: 0.75em;
+    padding-bottom: 0.2em;
+    font-weight: 700;
   }
 
   a {
@@ -45,7 +61,7 @@
   }
 
   button {
-    background: #E42F92;
+    background: #d3ad0f;
     color: white;
     border: none;
     border-radius: 4px;
@@ -55,11 +71,16 @@
     cursor: pointer;
   }
 
+  button:hover {
+    background: #fccc00;
+  }
+
   .form-control {
-    background-color: rgba(0, 0, 0, 0.1);
+    color: inherit;
     padding: 4px;
     margin: 5px 0;
     border: none;
+    background: #fcefb8;
     border-radius: 4px;
     display: block;
     width: 100%;

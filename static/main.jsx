@@ -61,7 +61,7 @@
       return (
         <form onSubmit={this.handleSubmit}>
           <p><small>
-            You can sign the card below. Your name and message will only be seen by Jess and her friends and coworkers.
+            You can sign the card below. Your name and message will only be seen by Mari and her friends and coworkers.
           </small></p>
           <input valueLink={this.linkState('name')} type="text" className="form-control" placeholder="Your name" required/>
           <input valueLink={this.linkState('url')} type="url" className="form-control" placeholder="Your avatar or animated GIF URL (optional)"/>
@@ -158,18 +158,18 @@
       }
       return (
         <div className="content">
-          <header>Get Well Soon, Jess!!</header>
           <section>
-            <img src="lovebomb.svg" className="lovebomb" alt="Love Bomb"/>
+            <img src="mari.png" className="lovebomb" alt="Mari"/>
             <p className="big">
-              We're sorry to hear you aren't
-              feeling well and hope you get better soon.
+              <em>We Love + Will Miss You,</em>
+              <strong>Mari!!</strong>
+              You rock.
             </p>
             <div className="container">
               {contents}
             </div>
             <aside>
-              This mega love bomb was lovingly handcrafted with HTML, CSS, and JS in November 2014.
+              This mega love bomb was lovingly handcrafted with HTML, CSS, and JS in January 2015.
             </aside>
           </section>
         </div>
